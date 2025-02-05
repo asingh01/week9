@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>React In HTML</title>
+    <body>
+      <div id="button"></div>
+      <script>
+        let state = { count: 0 };
+
+        function onButtonPress() {
+          state.count++;
+          reRenderButton();
+        }
+
+        function reRenderButton() {
+          document.getElementById("button").innerHTML = " ";
+          const component = buttonComponent(state.count);
+          document.getElementById("button").appendChild(component);
+        }
+
+        function buttonComponent(count) {
+          const button = document.createElement("button");
+          button.innerHTML = `Count: ${count}`;
+          button.setAttribute("onClick", "onButtonPress()");
+          return button;
+        }
+
+        reRenderButton();
+      </script>
+    </body>
+  </head>
+</html>
